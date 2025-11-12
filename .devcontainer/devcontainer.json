@@ -1,0 +1,56 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/java
+{
+  "name": "Java Bogarin",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/java:1-21-bullseye",
+
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installMaven": "true",
+      "installGradle": "false"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers-extra/features/springboot-sdkman:2": {}
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [8080],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "java -version",
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "workbench.colorTheme": "Abyss"
+      },
+      // Otros temas disponibles por defecto en VS Code incluyen:
+      // "workbench.colorTheme": "Default Light+"
+      // "workbench.colorTheme": "Abyss"
+      // "workbench.colorTheme": "Kimbie Dark"
+      // "workbench.colorTheme": "Monokai"
+      // "workbench.colorTheme": "Quiet Light"
+      // "workbench.colorTheme": "Red"
+      // "workbench.colorTheme": "Solarized Dark"
+      // "workbench.colorTheme": "Solarized Light"
+      // "workbench.colorTheme": "Tomorrow Night Blue"
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-spring-initializr",
+        "vscjava.vscode-spring-boot-dashboard",
+        "vscjava.vscode-spring-boot",
+        "pivotal.vscode-boot-dev-pack",
+        "redhat.fabric8-analytics",
+        "redhat.vscode-xml",
+        "mhutchie.git-graph",
+        "eamodio.gitlens"
+    ]
+    }
+  },
+  // Uncomment to use the Docker CLI from inside the container (i.e. "docker" command).
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  "remoteUser": "vscode"
+}

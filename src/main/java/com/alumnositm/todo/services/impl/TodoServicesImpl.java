@@ -98,8 +98,7 @@ public class TodoServicesImpl implements TodoServices {
     }
 
     public TodoEntity updateTodoById(int idTodo, CreateTodoRequest updateRequest) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateTodoById'");
+        when(todoServices.updateTodoById(eq(0L), any(Todo.class))).thenReturn(expectedValue);
     }
 
 

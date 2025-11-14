@@ -10,7 +10,7 @@ import com.alumnositm.todo.dtos.request.CreateTodoRequest;
 import com.alumnositm.todo.dtos.request.UpdateTodoRequest;
 import com.alumnositm.todo.entities.TodoEntity;
 import com.alumnositm.todo.helpers.TodoStatus;
-import com.alumnositm.todo.repositorys.TodoRepository;
+import com.alumnositm.todo.repository.TodoRepository;
 import com.alumnositm.todo.services.TodoServices;
 
 @Service
@@ -96,6 +96,12 @@ public class TodoServicesImpl implements TodoServices {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public TodoEntity updateTodoById(int idTodo, CreateTodoRequest entity) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateTodoById'");
     }
 
     

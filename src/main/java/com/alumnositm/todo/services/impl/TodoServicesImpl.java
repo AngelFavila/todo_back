@@ -98,12 +98,6 @@ public class TodoServicesImpl implements TodoServices {
         return false;
     }
 
-    @Override
-    public TodoEntity updateTodoById(int idTodo, CreateTodoRequest entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateTodoById'");
-    }
-
     
 
 

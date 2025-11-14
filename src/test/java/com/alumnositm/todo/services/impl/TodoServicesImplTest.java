@@ -4,6 +4,7 @@ package com.alumnositm.todo.services.impl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.*;
+import static org.mockito.Mockito.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.alumnositm.todo.dtos.request.CreateTodoRequest;
+import com.alumnositm.todo.dtos.request.UpdateTodoRequest;
 import com.alumnositm.todo.entities.TodoEntity;
 import com.alumnositm.todo.helpers.TodoStatus;
 import com.alumnositm.todo.repository.TodoRepository;
@@ -164,7 +166,7 @@ class TodoServicesImplTest {
     @DisplayName("updateTodoById() debe actualizar y retornar todo cuando existe")
     void updateTodoById_shouldUpdateAndReturnTodoWhenExists() {
         // Given
-        CreateTodoRequest updateRequest = new CreateTodoRequest("Updated Title", "Updated Description");
+        UpdateTodoRequest updateRequest = new UpdateTodoRequest("Updated Title", "Updated Description", TodoStatus.COMPLETED);
         given(todoRepository.findById(1L)).willReturn(Optional.of(sampleTodo));
         given(todoRepository.save(any(TodoEntity.class))).willReturn(sampleTodo);
 
@@ -184,7 +186,7 @@ class TodoServicesImplTest {
     @DisplayName("updateTodoById() debe cambiar status a COMPLETED al actualizar")
     void updateTodoById_shouldChangeStatusToCompleted() {
         // Given
-        CreateTodoRequest updateRequest = new CreateTodoRequest("Updated", "Updated Desc");
+        UpdateTodoRequest updateRequest = new UpdateTodoRequest("Updated", "Updated Desc", TodoStatus.COMPLETED);
         given(todoRepository.findById(1L)).willReturn(Optional.of(sampleTodo));
         given(todoRepository.save(any(TodoEntity.class))).willAnswer(invocation -> invocation.getArgument(0));
 
@@ -200,7 +202,7 @@ class TodoServicesImplTest {
     @DisplayName("updateTodoById() debe retornar null cuando no existe")
     void updateTodoById_shouldReturnNullWhenNotExists() {
         // Given
-        CreateTodoRequest updateRequest = new CreateTodoRequest("Updated", "Updated Desc");
+        UpdateTodoRequest updateRequest = new UpdateTodoRequest("Updated", "Updated Desc", TodoStatus.IN_PROGRESS);
         given(todoRepository.findById(999L)).willReturn(Optional.empty());
 
         // When

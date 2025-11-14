@@ -10,7 +10,7 @@ import com.alumnositm.todo.dtos.request.CreateTodoRequest;
 import com.alumnositm.todo.dtos.request.UpdateTodoRequest;
 import com.alumnositm.todo.entities.TodoEntity;
 import com.alumnositm.todo.helpers.TodoStatus;
-import com.alumnositm.todo.repository.TodoRepository;
+import com.alumnositm.todo.repositorys.TodoRepository;
 import com.alumnositm.todo.services.TodoServices;
 
 @Service
@@ -63,7 +63,8 @@ public class TodoServicesImpl implements TodoServices {
         if(todoEntity!=null){
             todoEntity.setTitle(entity.getTitle());
             todoEntity.setDescription(entity.getDescription());
-            todoEntity.setStatus(entity.getStatus());
+            // el error viene desde aqui
+            todoEntity.setStatus(TodoStatus.COMPLETED);
             todoRepository.save(todoEntity);
             return todoEntity;
         }
@@ -97,9 +98,8 @@ public class TodoServicesImpl implements TodoServices {
         return false;
     }
 
-    public TodoEntity updateTodoById(int idTodo, CreateTodoRequest updateRequest) {
-        when(todoServices.updateTodoById(eq(0L), any(Todo.class))).thenReturn(expectedValue);
-    }
+    
+
 
 
 }
